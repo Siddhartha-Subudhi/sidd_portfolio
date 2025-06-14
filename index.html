@@ -2,134 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Siddhartha Subudhi | Data Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siddhartha Subudhi | Data Engineer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: linear-gradient(to right, #f0f0f0, #e0f7fa); color: #333; }
-    section { padding: 80px 20px; }
-    h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: #D72638; text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
-    h1 { font-size: 3.5rem; animation: popIn 1s ease-out forwards; }
-    h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    h3 { font-size: 1.4rem; margin-top: 30px; }
-    p, li { font-size: 1.1rem; line-height: 1.7; }
-    ul { padding-left: 20px; }
-    a { color: #D72638; text-decoration: none; transition: all 0.3s ease; }
-    a:hover { color: #880e4f; text-decoration: underline; }
-    #hero { background: linear-gradient(to right, #1E1E24, #3E3E4E); color: white; text-align: center; padding: 100px 20px; animation: slideDown 1.5s ease-out forwards; }
-    #skills, #projects, #education { background: #f8f8f8; }
-    #contact { background: linear-gradient(to right, #1E1E24, #3E3E4E); color: white; }
-    .links a { margin: 0 15px; font-size: 1.3rem; }
+    /* Basic Reset */
+    *, *::before, *::after {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: 'Poppins', sans-serif; color:#333; scroll-behavior:smooth;}
+    a {text-decoration:none; color:inherit;}
+    section {padding:80px 20px;}
+    h2 {font-size:2.2rem; color:#D72638; margin-bottom:1rem;}
 
-    @keyframes slideDown {
-      0% { transform: translateY(-50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+/* --- Hero Slider --- */
+    .swiper {width:100%; height:100vh;}
+    .swiper-slide {
+      position: relative;
+      background-size:cover; background-position:center;
     }
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .hero-overlay {
+      position:absolute; inset:0;
+      background:rgba(30,30,36,0.6);
+      display:flex; justify-content:center; align-items:center; flex-direction:column;
+      text-align:center; color:white;
     }
-    .highlight { color: #FF4081; font-weight: bold; }
-    .fade-in { animation: fadeIn 2s ease-in forwards; }
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    .hero-overlay h1 {font-size:3.5rem; margin-bottom:1rem; animation:popIn 1s;}
+    .hero-overlay p {font-size:1.2rem; margin-bottom:20px; opacity:0; animation:fadeIn 2s forwards;}
+    .hero-overlay p:nth-child(2){animation-delay:0.5s;}
+    .hero-overlay .btn {background:#D72638; color:white; padding:10px 30px; border-radius:30px; transition:0.3s;}
+    .hero-overlay .btn:hover {background:#FF4081;}
+
+    @keyframes popIn {0%{transform:scale(0.5); opacity:0;}100%{transform:scale(1); opacity:1;}}
+    @keyframes fadeIn {to{opacity:1;}}
+
+/* --- Projects Grid --- */
+    .projects-grid {display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .project-card {
+      overflow:hidden; border-radius:8px; position:relative; cursor:pointer;
+      transition: transform .3s; 
     }
+    .project-card img {
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+    .project-card:hover img {transform: scale(1.05);}
+    .project-info {
+      position:absolute; bottom:0; left:0; right:0;
+      background:rgba(0,0,0,0.6); color:white; padding:15px;
+      transform: translateY(100%); transition: transform .3s;
+    }
+    .project-card:hover .project-info {transform: translateY(0);}
+
+/* --- Navigation & Smooth Links --- */
+    nav {
+      position: fixed; top:0; left:0; width:100%; background:rgba(255,255,255,0.9);
+      display:flex; justify-content:center; gap:30px; padding:15px 0; z-index:10;
+      box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    }
+    nav a {color:#333; font-weight:500;}
+    nav a:hover {color:#D72638;}
+
+/* --- Hero Buttons --- */
+    .btn {display:inline-block; font-weight:500;}
+
+/* --- Mix Sections --- */
+    #about, #skills, #contact {max-width:900px; margin:0 auto;}
+    .skills-list {display:flex; flex-wrap:wrap; gap:15px; list-style:none;}
+    .skills-list li {background:#f0f0f0; padding:10px 20px; border-radius:30px;}
+
+/* --- Contact Form --- */
+    form {display:flex; flex-direction:column; gap:15px;}
+    form input, form textarea {
+      padding:12px; border:1px solid #ccc; border-radius:6px; font-size:1rem;
+    }
+    form button {background:#D72638; color:white; padding:12px; border:none; border-radius:6px; font-size:1.1rem; cursor:pointer;}
+    form button:hover {background:#FF4081;}
   </style>
 </head>
 <body>
 
-  <section id="hero">
-    <h1>Hi, I'm <span class="highlight">Siddhartha Subudhi</span></h1>
-    <p class="fade-in">Crafting Data Solutions with Azure | PySpark | Big Data</p>
-    <p class="fade-in">Based in Bhubaneswar, Odisha, India 🇮🇳</p>
-    <div class="links">
-      <a href="mailto:siddhartha.subudhi5@gmail.com">📧 Email</a>
-      <a href="https://linkedin.com/in/siddhartha" target="_blank">🔗 LinkedIn</a>
-      <a href="https://github.com/siddhartha" target="_blank">💻 GitHub</a>
+<nav>
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="hero">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url('https://source.unsplash.com/1600x900/?data');">
+        <div class="hero-overlay">
+          <h1>Siddhartha Subudhi</h1>
+          <p>Data Engineer • Azure • PySpark • Big Data</p>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <!-- Additional slides -->
     </div>
-  </section>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a <span class="highlight">results-driven</span> Data Engineer with nearly 5 years of experience in designing, building, and optimizing data workflows on Microsoft Azure. I bring life to raw data using ADF, Databricks, Synapse, and advanced Python & PySpark scripting. My passion is making data talk, and enabling enterprises to make <span class="highlight">fast, accurate, and scalable decisions</span>.
-    </p>
-  </section>
+<section id="about">
+  <h2>About Me</h2>
+  <p>I’m a forward-thinking Azure Data Engineer with 4.9 years of experience architecting & deploying cloud-based data pipelines. I thrive on delivering scalable analytics solutions that drive business insights.</p>
+</section>
 
-  <section id="skills">
-    <h2>Skills & Tools</h2>
-    <ul>
-      <li><strong>Languages:</strong> SQL, PySpark, Python</li>
-      <li><strong>Databases:</strong> MS SQL Server, PostgreSQL</li>
-      <li><strong>Cloud:</strong> Azure Data Factory, Azure Databricks, Synapse, Azure Storage, Key Vault</li>
-      <li><strong>Reporting:</strong> Power BI, SSIS, SSRS</li>
-      <li><strong>Tools:</strong> Jupyter, PyCharm, Azure Portal, SSMS, JIRA</li>
-    </ul>
-  </section>
+<section id="projects">
+  <h2>Featured Work</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://source.unsplash.com/400x300/?pipeline,code" alt="Project 1"/>
+      <div class="project-info"><strong>Azure ETL Pipeline</strong><p>ADF + Databricks pipeline for unified enterprise ingestion.</p></div>
+    </div>
+    <!-- Add more project cards -->
+  </div>
+</section>
 
-  <section id="experience">
-    <h2>Professional Experience</h2>
-    <h3>Azure Data Engineer – Tata Consultancy Services (Nov 2021 – Present)</h3>
-    <ul>
-      <li>Engineered ADF pipelines that improved data reliability by 30%</li>
-      <li>Led migration of SQL Server to Azure, saving infra cost by 20%</li>
-      <li>Optimized Databricks workflows, reducing ETL time by 40%</li>
-      <li>Collaborated with BI teams to deliver dynamic dashboards in Power BI</li>
-    </ul>
+<section id="skills">
+  <h2>Skills</h2>
+  <ul class="skills-list">
+    <li>Azure Data Factory</li><li>Databricks</li><li>SQL</li><li>Python & PySpark</li>
+    <li>Power BI</li><li>Synapse Analytics</li>
+  </ul>
+</section>
 
-    <h3>SQL Server DBA – Tata Consultancy Services (Aug 2019 – Oct 2021)</h3>
-    <ul>
-      <li>Managed mission-critical SQL environments across geographies</li>
-      <li>Handled backups, HA/DR setups and performance tuning</li>
-      <li>Implemented blob storage-based backup strategy in Azure</li>
-    </ul>
-  </section>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form action="mailto:siddhartha.subudhi5@gmail.com" method="POST" enctype="text/plain">
+    <input type="text" name="Name" placeholder="Your name" required/>
+    <input type="email" name="Email" placeholder="Your email" required/>
+    <textarea name="Message" rows="5" placeholder="Your message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
-  <section id="projects">
-    <h2>Key Projects</h2>
-    <ul>
-      <li><strong>Unified Data Lakehouse:</strong> Built end-to-end pipeline with ADF, Databricks & Delta Lake for 10+ data sources</li>
-      <li><strong>IoT Analytics Platform:</strong> Designed Synapse + Power BI analytics layer for real-time telemetry insights</li>
-      <li><strong>Cost Optimization:</strong> Refactored SQL licensing model, saving $500,000/year</li>
-    </ul>
-  </section>
-
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-      <li>DP-900: Microsoft Azure Fundamentals</li>
-      <li>DP-203: Data Engineering on Microsoft Azure</li>
-      <li>Databricks Accredited Lakehouse Fundamentals</li>
-    </ul>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>B.Tech (EEE)</strong> – Centurion University | CGPA: 8.15</li>
-      <li><strong>12th:</strong> Kendriya Vidyalaya Cuttack – 75%</li>
-      <li><strong>10th:</strong> Kendriya Vidyalaya Cuttack – CGPA 9.6</li>
-    </ul>
-  </section>
-
-  <section id="awards">
-    <h2>Achievements</h2>
-    <ul>
-      <li>2x A-Grade Annual Ratings – TCS</li>
-      <li>ON THE SPOT Award – For critical delivery excellence</li>
-      <li>Service Commitment – 3-year milestone at TCS</li>
-      <li>Special Incentive – Saved $0.5M through infra redesign</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:siddhartha.subudhi5@gmail.com">siddhartha.subudhi5@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/siddhartha" target="_blank">linkedin.com/in/siddhartha</a></p>
-    <p>GitHub: <a href="https://github.com/siddhartha" target="_blank">github.com/siddhartha</a></p>
-  </section>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    pagination: { el: '.swiper-pagination', clickable: true },
+    autoplay: { delay: 5000 },
+    loop: true,
+  });
+</script>
 
 </body>
 </html>
